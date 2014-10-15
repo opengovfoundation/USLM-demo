@@ -1,0 +1,20 @@
+{
+  "name": "opengovfoundation/uslm-verify",
+  "type": "",
+  "description": "Simple interface to test the output of the opengovfoundation/uslm library",
+  "keywords": ["USLM"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chris Birk",
+      "email": "cmbirk@gmail.com",
+      "homepage": "https://github.com/cmbirk"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "USLM\\": "USLM/USLM"
+    },
+    "files": ["USLM/functions.php"]
+  }
+}
