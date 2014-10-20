@@ -11,10 +11,14 @@
       "homepage": "https://github.com/cmbirk"
     }
   ],
-  "autoload": {
-    "psr-4": {
-      "USLM\\": "USLM/USLM"
-    },
-    "files": ["USLM/functions.php"]
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/opengovfoundation/USLM"
+    }
+  ],
+  "require":{
+    "opengovfoundation/uslm": "dev-master",
+    "slim/slim": "~2.4"
   }
 }
