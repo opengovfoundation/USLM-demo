@@ -18,7 +18,6 @@
     }
   ],
   "require":{
-    "opengovfoundation/uslm": "dev-master",
-    "slim/slim": "~2.4"
+    "opengovfoundation/uslm": "dev-master"
   }
 }
