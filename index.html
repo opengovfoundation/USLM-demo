@@ -14,25 +14,67 @@
         <!-- Third Party Stylesheets -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bower_components/angular-growl/build/angular-growl.min.css">
 
         <!-- Custom Stylesheets -->
+        <link rel="stylesheet" href="css/style.css">
 
     </head>
-    <body xmlns:ng="" id="ng-app" ng-app="uslmTest" ng-controller="AppController">
+    <body xmlns:ng="http://angularjs.org" id="ng-app" ng-app="uslmTest" ng-controller="AppController">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-
+        <div growl></div>
+        <div class="container">
+            <div class="header">
+                <h3>USLM Test Demo</h3>
+            </div>
+            <div class="jumbotron">
+                <h1>Test the USLM library</h1>
+                <p class="lead">Upload XML file below.</p>
+            </div>
+            <div ng-controller="DownloadController">
+                <form>
+                    <input type="file" ng-file-select="onFileSelect($files)">
+                    <div ng-file-drop="onFileSelect($files)" ng-show="dropSupported">Drop File Here</div>
+                    <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+                    <div class="button" ng-file-select="onFileSelect($files)"></div>
+                    <div ng-show="selectedFiles != null" class="ng-hide"></div>
+                    <button ng-click="upload.abort()">Cancel Upload</button>
+                </form>
+                <div class="output" ng-show="bill">
+                    <p>DMS ID: {{ bill.dms_id }}</p>
+                    <p>Bill Stage: {{ bill.bill_stage }}</p>
+                    <p>Congress: {{ bill.congress }}</p>
+                    <p>Session: {{ bill.session }}</p>
+                    <p>Legis Num: {{ bill.legis_num }}</p>
+                    <p>Chamber: {{ bill.chamber }}</p>
+                    <p>Type: {{ bill.type }}</p>
+                    <p>Title: {{ bill.title }}</p>
+                    <div>
+                        <div>Actions:</div>
+                        <div ng-repeat="action in bill.actions">
+                            <p>Date: {{ action['action-date'] }}</p>
+                            <p>Description: {{ action['action-desc']['text'] }}</p>
+                            <p>Sponsor: {{ action['action-desc']['sponsor'] }}</p>
+                            <p>Committee: {{ action['action-desc']['committee-name'] }}</p>
+                            <p>Cosponsors: {{ actions['action-desc']['cosponsor'] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Include Third Party Scripts -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+        <script src="bower_components/angular-growl/build/angular-growl.min.js"></script>
 
         <!-- Custom Scripts -->
-        
+        <script src="js/app.js"></script>
+        <script src="js/controllers.js"></script>
     </body>
 </html>
