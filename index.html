@@ -34,13 +34,13 @@
                 <p class="lead">Upload XML file below.</p>
             </div>
             <div ng-controller="DownloadController">
-                <form>
+                <form name="uploadForm">
                     <input type="file" ng-file-select="onFileSelect($files)">
-                    <div ng-file-drop="onFileSelect($files)" ng-show="dropSupported">Drop File Here</div>
+                    <div ng-file-drop="onFileSelect($files)" ng-show="dropSupported" class="file-drop">Drop File Here</div>
                     <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
                     <div class="button" ng-file-select="onFileSelect($files)"></div>
                     <div ng-show="selectedFiles != null" class="ng-hide"></div>
-                    <button ng-click="upload.abort()">Cancel Upload</button>
+                    <button ng-click="clearUpload()" class="btn btn-default">Clear Upload</button>
                 </form>
                 <div class="output" ng-show="bill">
                     <p>DMS ID: {{ bill.dms_id }}</p>

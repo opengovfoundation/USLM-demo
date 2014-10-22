@@ -1,3 +1,11 @@
 /*
 * Custom SASS Stylesheet
 */
+/* line 5, ../sass/style.scss */
+.file-drop {
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+  background: mediumseagreen;
+  border: 2px dashed darkgreen;
+}
