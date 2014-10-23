@@ -43,24 +43,35 @@
                     <button ng-click="clearUpload()" class="btn btn-default">Clear Upload</button>
                 </form>
                 <div class="output" ng-show="bill">
-                    <p>DMS ID: {{ bill.dms_id }}</p>
-                    <p>Bill Stage: {{ bill.bill_stage }}</p>
-                    <p>Congress: {{ bill.congress }}</p>
-                    <p>Session: {{ bill.session }}</p>
-                    <p>Legis Num: {{ bill.legis_num }}</p>
-                    <p>Chamber: {{ bill.chamber }}</p>
-                    <p>Type: {{ bill.type }}</p>
-                    <p>Title: {{ bill.title }}</p>
-                    <div>
-                        <div>Actions:</div>
-                        <div ng-repeat="action in bill.actions">
-                            <p>Date: {{ action['action-date'] }}</p>
-                            <p>Description: {{ action['action-desc']['text'] }}</p>
-                            <p>Sponsor: {{ action['action-desc']['sponsor'] }}</p>
-                            <p>Committee: {{ action['action-desc']['committee-name'] }}</p>
-                            <p>Cosponsors: {{ actions['action-desc']['cosponsor'] }}</p>
-                        </div>
-                    </div>
+                    <ul>
+                        <li><strong>Official Title</strong><span>{{ bill.title }}</span></li>
+                        <li><strong>Sponsor: </strong><span>{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span></li>
+                        <li>
+                            <strong>Cosponsors: </strong>
+                            <ul>
+                                <li ng-repeat="cosponsor in bill.cosponsors">{{ cosponsor.name }} ({{ cosponsor['name-id'] }})</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Committees: </strong>
+                            <ul>
+                                <li ng-repeat="committee in bill.committees">{{ committee['committee-name'] }} ({{ committee['committee-id'] }})</li>
+                            </ul>
+                        </li>
+                        <li><strong>DMS ID: </strong><span>{{ bill.dms_id }}</span></li>
+                        <li><strong>Bill Stage: </strong><span>{{ bill.bill_stage }}</span></li>
+                        <li><strong>Congress: </strong><span>{{ bill.congress }}</span></li>
+                        <li><strong>Session: </strong><span>{{ bill.session }}</span></li>
+                        <li><strong>Legis Num: </strong><span>{{ bill.legis_num }}</span></li>
+                        <li><strong>Current Chamber: </strong><span>{{ bill.chamber }}</span></li>
+                        <li><strong>Legis Type: </strong><span>{{ bill.type }}</span></li>
+                        <li>
+                            <strong>Actions: </strong>
+                            <ul>
+                                <li ng-repeat="action in bill.actions">{{ action }}</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

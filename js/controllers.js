@@ -5,9 +5,10 @@ angular.module('uslmTest.controllers', [])
     }])
   .controller('DownloadController', ['$scope', '$upload', 'growl',
     function ($scope, $upload, growl) {
-      $scope.onFileSelect = function ($files) {
-        console.log($files);
 
+      $scope.uploadForm = {};
+
+      $scope.onFileSelect = function ($files) {
         if ($files.length > 1) {
           growl.addWarnMessage('We can only handle one file at a time!');
           return false;
@@ -23,6 +24,12 @@ angular.module('uslmTest.controllers', [])
         }).error( function (data) {
           growl.addWarnMessage('Error: ' + data);
         });
-
       };
+
+      $scope.clearUpload = function () {
+        console.log("Clearing %o", $scope.uploadForm);
+        $scope.bill = null;
+        $scope.uploadForm.$setPristine();
+      };
+
     }]);
