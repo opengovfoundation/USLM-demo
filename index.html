@@ -47,7 +47,7 @@
                         <li><strong>Official Title</strong><span>{{ bill.title }}</span></li>
                         <li><strong>Sponsor: </strong><span>{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span></li>
                         <li>
-                            <strong>Cosponsors: </strong>
+                            <strong>Cosponsors ({{ bill.cosponsors.length }}): </strong>
                             <ul>
                                 <li ng-repeat="cosponsor in bill.cosponsors">{{ cosponsor.name }} ({{ cosponsor['name-id'] }})</li>
                             </ul>
