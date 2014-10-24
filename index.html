@@ -44,16 +44,16 @@
                 </form>
                 <div class="output" ng-show="bill">
                     <ul>
-                        <li><strong>Official Title</strong><span>{{ bill.title }}</span></li>
-                        <li><strong>Sponsor: </strong><span>{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span></li>
+                        <li><strong>Official Title: </strong><span>{{ bill.title }}</span></li>
+                        <li><strong>Sponsor: </strong><span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span><span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span></li>
                         <li>
-                            <strong>Cosponsors ({{ bill.cosponsors.length }}): </strong>
+                            <strong>Cosponsors <span ng-show="bill.cosponsors.length > 0">({{ bill.cosponsors.length }})</span>: </strong><span ng-show="bill.cosponsors.length == 0" class="warning">No Cosponsors Found.</span>
                             <ul>
                                 <li ng-repeat="cosponsor in bill.cosponsors">{{ cosponsor.name }} ({{ cosponsor['name-id'] }})</li>
                             </ul>
                         </li>
                         <li>
-                            <strong>Committees: </strong>
+                            <strong>Committees: </strong><span ng-show="bill.committees.length == 0" class="warning">No Committees Found.</span>
                             <ul>
                                 <li ng-repeat="committee in bill.committees">{{ committee['committee-name'] }} ({{ committee['committee-id'] }})</li>
                             </ul>
@@ -66,7 +66,7 @@
                         <li><strong>Current Chamber: </strong><span>{{ bill.chamber }}</span></li>
                         <li><strong>Legis Type: </strong><span>{{ bill.type }}</span></li>
                         <li>
-                            <strong>Actions: </strong>
+                            <strong>Actions: </strong><span ng-show="bill.actions.length == 0" class="warning">No Actions Found.</span>
                             <ul>
                                 <li ng-repeat="action in bill.actions">{{ action }}</li>
                             </ul>

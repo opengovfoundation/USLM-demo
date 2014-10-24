@@ -9,3 +9,8 @@
   background: mediumseagreen;
   border: 2px dashed darkgreen;
 }
+
+/* line 13, ../sass/style.scss */
+span.warning {
+  color: red;
+}
