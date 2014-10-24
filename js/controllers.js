@@ -8,7 +8,9 @@ angular.module('uslmTest.controllers', [])
 
       $scope.uploadForm = {};
 
-      $scope.onFileSelect = function ($files) {
+      $scope.onFileSelect = function ($files, $event) {
+        $scope.input = $event.target;
+
         if ($files.length > 1) {
           growl.addWarnMessage('We can only handle one file at a time!');
           return false;
@@ -27,9 +29,13 @@ angular.module('uslmTest.controllers', [])
       };
 
       $scope.clearUpload = function () {
-        console.log("Clearing %o", $scope.uploadForm);
+        //Clear bill object
         $scope.bill = null;
-        $scope.uploadForm.$setPristine();
+
+        //Clear file input
+        var input = $($scope.input);
+        input.replaceWith(input = input.clone(true));
+        $scope.input = null;
       };
 
     }]);

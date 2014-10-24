@@ -35,10 +35,10 @@
             </div>
             <div ng-controller="DownloadController">
                 <form name="uploadForm">
-                    <input type="file" ng-file-select="onFileSelect($files)">
-                    <div ng-file-drop="onFileSelect($files)" ng-show="dropSupported" class="file-drop">Drop File Here</div>
+                    <input type="file" ng-file-select="onFileSelect($files, $event)">
+                    <div ng-file-drop="onFileSelect($files, $event)" ng-show="dropSupported" class="file-drop">Drop File Here</div>
                     <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
-                    <div class="button" ng-file-select="onFileSelect($files)"></div>
+                    <div class="button" ng-file-select="onFileSelect($files, $event)"></div>
                     <div ng-show="selectedFiles != null" class="ng-hide"></div>
                     <button ng-click="clearUpload()" class="btn btn-default">Clear Upload</button>
                 </form>
