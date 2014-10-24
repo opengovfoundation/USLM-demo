@@ -1,4 +1,5 @@
 .sass-cache
+.rocketeer
 bower_components
 vendor
 composer.lock

@@ -1,23 +1,29 @@
 {
-  "name": "opengovfoundation/uslm-verify",
-  "type": "",
-  "description": "Simple interface to test the output of the opengovfoundation/uslm library",
-  "keywords": ["USLM"],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Chris Birk",
-      "email": "cmbirk@gmail.com",
-      "homepage": "https://github.com/cmbirk"
+    "name": "opengovfoundation/uslm-verify",
+    "type": "",
+    "description": "Simple interface to test the output of the opengovfoundation/uslm library",
+    "keywords": [
+        "USLM"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Birk",
+            "email": "cmbirk@gmail.com",
+            "homepage": "https://github.com/cmbirk"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/opengovfoundation/USLM"
+        }
+    ],
+    "require": {
+        "opengovfoundation/uslm": "dev-master"
+    },
+    "require-dev": {
+        "anahkiasen/rocketeer": "~2.0",
+        "patchwork/utf8": "~1.1"
     }
-  ],
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/opengovfoundation/USLM"
-    }
-  ],
-  "require":{
-    "opengovfoundation/uslm": "dev-master"
-  }
 }
