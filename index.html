@@ -69,7 +69,13 @@
                         <li>
                             <strong>Actions: </strong><span ng-show="bill.actions.length == 0" class="warning">No Actions Found.</span>
                             <ul>
-                                <li ng-repeat="action in bill.actions">{{ action }}</li>
+                                <li ng-repeat="action in bill.actions">
+                                    <p><strong>Action Date: </strong>{{ action['action-date'] }}</p>
+                                    <ul>
+                                        <strong>Action Desc:</strong>
+                                        <li ng-repeat="(key, value) in action['action-desc']"><strong>{{ key }}: </strong>{{ value }}</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                     </ul>
