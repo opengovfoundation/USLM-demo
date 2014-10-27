@@ -1,7 +1,8 @@
 var imports = [
   'angular-growl',
   'angularFileUpload',
-  'uslmTest.controllers'
+  'uslmTest.controllers',
+  'uslmTest.filters'
 ];
 
 var app = angular.module('uslmTest', imports);

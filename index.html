@@ -73,7 +73,15 @@
                                     <p><strong>Action Date: </strong>{{ action['action-date'] }}</p>
                                     <ul>
                                         <strong>Action Desc:</strong>
-                                        <li ng-repeat="(key, value) in action['action-desc']"><strong>{{ key }}: </strong>{{ value }}</li>
+                                        <li ng-repeat="(key, value) in action['action-desc']">
+                                            <strong>{{ key }}: </strong>
+                                            <ul ng-if="value|isArray">
+                                                <li ng-repeat="(subkey, subvalue) in value">
+                                                    <strong>{{ subkey }}: </strong>{{ subvalue }}
+                                                </li>
+                                            </ul>
+                                            <span ng-if="!(value|isArray)">{{ value }}</span>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -94,5 +102,6 @@
         <!-- Custom Scripts -->
         <script src="js/app.js"></script>
         <script src="js/controllers.js"></script>
+        <script src="js/filters.js"></script>
     </body>
 </html>
