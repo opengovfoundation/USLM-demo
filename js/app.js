@@ -1,5 +1,6 @@
 var imports = [
   'angular-growl',
+  'ui.bootstrap',
   'angularFileUpload',
   'uslmTest.controllers',
   'uslmTest.filters'

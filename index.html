@@ -44,6 +44,15 @@
                     <button ng-click="clearUpload()" class="btn btn-default">Clear Upload</button>
                 </form>
                 <div class="output" ng-show="bill">
+                    <accordion close-others="false">
+                        <accordion-group heading="Official Title" is-open="true">
+                            {{ bill.title }}
+                        </accordion-group>
+                        <accordion-group heading="Sponsor" is-open="true">
+                            <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id']}})</span>
+                            <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
+                        </accordion-group>
+                    </accordion>
                     <ul>
                         <li><strong>Official Title: </strong><span>{{ bill.title }}</span></li>
                         <li><strong>Sponsor: </strong><span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span><span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span></li>
@@ -93,11 +102,12 @@
         
         <!-- Include Third Party Scripts -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
         <script src="bower_components/angular-growl/build/angular-growl.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
         <!-- Custom Scripts -->
         <script src="js/app.js"></script>
