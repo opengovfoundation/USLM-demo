@@ -19,3 +19,8 @@ span.warning {
 .panel-title > a {
   cursor: pointer;
 }
+
+/* line 21, ../sass/style.scss */
+.output {
+  margin-top: 30px;
+}
