@@ -14,3 +14,8 @@
 span.warning {
   color: red;
 }
+
+/* line 17, ../sass/style.scss */
+.panel-title > a {
+  cursor: pointer;
+}

@@ -52,31 +52,48 @@
                             <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id']}})</span>
                             <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
                         </accordion-group>
-                    </accordion>
-                    <ul>
-                        <li><strong>Official Title: </strong><span>{{ bill.title }}</span></li>
-                        <li><strong>Sponsor: </strong><span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span><span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span></li>
-                        <li>
-                            <strong>Cosponsors <span ng-show="bill.cosponsors.length > 0">({{ bill.cosponsors.length }})</span>: </strong><span ng-show="bill.cosponsors.length == 0" class="warning">No Cosponsors Found.</span>
+                        <accordion-group heading="Official Title" is-open="true">
+                            {{ bill.title }}
+                        </accordion-group>
+                        <accordion-group heading="Sponsor" is-open="true">
+                            <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span>
+                            <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
+                        </accordion-group>
+                        <accordion-group heading="Cosponsors" is-open="true">
+                            <span ng-show="bill.cosponsors.length == 0" class="warning">No Cosponsors Found.</span>
                             <ul>
                                 <li ng-repeat="cosponsor in bill.cosponsors">{{ cosponsor.name }} ({{ cosponsor['name-id'] }})</li>
                             </ul>
-                        </li>
-                        <li>
-                            <strong>Committees: </strong><span ng-show="bill.committees.length == 0" class="warning">No Committees Found.</span>
+                        </accordion-group>
+                        <accordion-group heading="Committees" is-open="true">
+                            <span ng-show="bill.committees.length == 0" class="warning">No Committees Found.</span>
                             <ul>
                                 <li ng-repeat="committee in bill.committees">{{ committee['committee-name'] }} ({{ committee['committee-id'] }})</li>
                             </ul>
-                        </li>
-                        <li><strong>DMS ID: </strong><span>{{ bill.dms_id }}</span></li>
-                        <li><strong>Bill Stage: </strong><span>{{ bill.bill_stage }}</span></li>
-                        <li><strong>Congress: </strong><span>{{ bill.congress }}</span></li>
-                        <li><strong>Session: </strong><span>{{ bill.session }}</span></li>
-                        <li><strong>Legis Num: </strong><span>{{ bill.legis_num }}</span></li>
-                        <li><strong>Current Chamber: </strong><span>{{ bill.chamber }}</span></li>
-                        <li><strong>Legis Type: </strong><span>{{ bill.type }}</span></li>
-                        <li>
-                            <strong>Actions: </strong><span ng-show="bill.actions.length == 0" class="warning">No Actions Found.</span>
+                        </accordion-group>
+                        <accordion-group heading="DMS ID" is-open="true">
+                            <span>{{ bill.dms_id }}</span>
+                        </accordion-group>
+                        <accordion-group heading="Bill Stage" is-open="true">
+                            <span>{{ bill.bill_stage }}</span>
+                        </accordion-group>
+                        <accordion-group heading="Congress" is-open="true">
+                            <span>{{ bill.congress }}</span>
+                        </accordion-group>
+                        <accordion-group heading="Session" is-open="true">
+                            <span>{{ bill.session }}</span>
+                        </accordion-group>
+                        <accordion-group heading="Legis Num" is-open="true">
+                            <span>{{ bill.legis_num }}</span>
+                        </accordion-group>
+                        <accordion-group heading="Current Chamber" is-open="true">
+                            <span>{{ bill.chamber }}</span>
+                        </accordion-group>
+                        <accordion-group heading="Legis Type" is-open="true">
+                            <span>{{ bill.type }}</span>
+                        </accordion-group>
+                        <accordion-group heading="Actions" is-open="true">
+                            <span ng-show="bill.actions.length == 0" class="warning">No Actions Found.</span>
                             <ul>
                                 <li ng-repeat="action in bill.actions">
                                     <p><strong>Action Date: </strong>{{ action['action-date'] }}</p>
@@ -94,8 +111,8 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
+                        </accordion-group>
+                    </accordion>
                 </div>
             </div>
         </div>
