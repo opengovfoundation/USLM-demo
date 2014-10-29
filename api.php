@@ -26,7 +26,8 @@ $legis_num = $bill->getLegisNum();
 $chamber = $bill->getCurrentChamber();
 $type = $bill->getLegisType();
 $actions = $bill->getActions();
+$body = $bill->getBodyAsMarkdown();
 
-$json = compact('title', 'sponsor', 'cosponsors', 'committees', 'dms_id', 'bill_stage', 'congress', 'session', 'legis_num', 'chamber', 'type', 'actions');
+$json = compact('title', 'sponsor', 'cosponsors', 'committees', 'dms_id', 'bill_stage', 'congress', 'session', 'legis_num', 'chamber', 'type', 'actions', 'body');
 
 echo json_encode($json);
