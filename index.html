@@ -43,72 +43,76 @@
                     <div ng-show="selectedFiles != null" class="ng-hide"></div>
                     <button ng-click="clearUpload()" class="btn btn-default">Clear Upload</button>
                 </form>
-                <div class="output" ng-show="bill">
-                    <accordion close-others="false">
-                        <accordion-group heading="Official Title" is-open="true">
-                            {{ bill.title }}
-                        </accordion-group>
-                        <accordion-group heading="Sponsor" is-open="true">
-                            <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span>
-                            <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
-                        </accordion-group>
-                        <accordion-group heading="Cosponsors" is-open="true">
-                            <span ng-show="bill.cosponsors.length == 0" class="warning">No Cosponsors Found.</span>
-                            <ul>
-                                <li ng-repeat="cosponsor in bill.cosponsors">{{ cosponsor.name }} ({{ cosponsor['name-id'] }})</li>
-                            </ul>
-                        </accordion-group>
-                        <accordion-group heading="Committees" is-open="true">
-                            <span ng-show="bill.committees.length == 0" class="warning">No Committees Found.</span>
-                            <ul>
-                                <li ng-repeat="committee in bill.committees">{{ committee['committee-name'] }} ({{ committee['committee-id'] }})</li>
-                            </ul>
-                        </accordion-group>
-                        <accordion-group heading="DMS ID" is-open="true">
-                            <span>{{ bill.dms_id }}</span>
-                        </accordion-group>
-                        <accordion-group heading="Bill Stage" is-open="true">
-                            <span>{{ bill.bill_stage }}</span>
-                        </accordion-group>
-                        <accordion-group heading="Congress" is-open="true">
-                            <span>{{ bill.congress }}</span>
-                        </accordion-group>
-                        <accordion-group heading="Session" is-open="true">
-                            <span>{{ bill.session }}</span>
-                        </accordion-group>
-                        <accordion-group heading="Legis Num" is-open="true">
-                            <span>{{ bill.legis_num }}</span>
-                        </accordion-group>
-                        <accordion-group heading="Current Chamber" is-open="true">
-                            <span>{{ bill.chamber }}</span>
-                        </accordion-group>
-                        <accordion-group heading="Legis Type" is-open="true">
-                            <span>{{ bill.type }}</span>
-                        </accordion-group>
-                        <accordion-group heading="Actions" is-open="true">
-                            <span ng-show="bill.actions.length == 0" class="warning">No Actions Found.</span>
-                            <ul>
-                                <li ng-repeat="action in bill.actions">
-                                    <p><strong>Action Date: </strong>{{ action['action-date'] }}</p>
+                <div class="output" ng-show="bills">
+                    <tabset>
+                        <tab ng-repeat="bill in bills" heading="{{ $index + 1 }}" active="bill.active">
+                            <accordion close-others="false">
+                                <accordion-group heading="Official Title" is-open="true">
+                                    {{ bill.title }}
+                                </accordion-group>
+                                <accordion-group heading="Sponsor" is-open="true">
+                                    <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span>
+                                    <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
+                                </accordion-group>
+                                <accordion-group heading="Cosponsors" is-open="true">
+                                    <span ng-show="bill.cosponsors.length == 0" class="warning">No Cosponsors Found.</span>
                                     <ul>
-                                        <strong>Action Desc:</strong>
-                                        <li ng-repeat="(key, value) in action['action-desc']">
-                                            <strong>{{ key }}: </strong>
-                                            <ul ng-if="value|isArray">
-                                                <li ng-repeat="(subkey, subvalue) in value">
-                                                    <strong>{{ subkey }}: </strong>{{ subvalue }}
+                                        <li ng-repeat="cosponsor in bill.cosponsors">{{ cosponsor.name }} ({{ cosponsor['name-id'] }})</li>
+                                    </ul>
+                                </accordion-group>
+                                <accordion-group heading="Committees" is-open="true">
+                                    <span ng-show="bill.committees.length == 0" class="warning">No Committees Found.</span>
+                                    <ul>
+                                        <li ng-repeat="committee in bill.committees">{{ committee['committee-name'] }} ({{ committee['committee-id'] }})</li>
+                                    </ul>
+                                </accordion-group>
+                                <accordion-group heading="DMS ID" is-open="true">
+                                    <span>{{ bill.dms_id }}</span>
+                                </accordion-group>
+                                <accordion-group heading="Bill Stage" is-open="true">
+                                    <span>{{ bill.bill_stage }}</span>
+                                </accordion-group>
+                                <accordion-group heading="Congress" is-open="true">
+                                    <span>{{ bill.congress }}</span>
+                                </accordion-group>
+                                <accordion-group heading="Session" is-open="true">
+                                    <span>{{ bill.session }}</span>
+                                </accordion-group>
+                                <accordion-group heading="Legis Num" is-open="true">
+                                    <span>{{ bill.legis_num }}</span>
+                                </accordion-group>
+                                <accordion-group heading="Current Chamber" is-open="true">
+                                    <span>{{ bill.chamber }}</span>
+                                </accordion-group>
+                                <accordion-group heading="Legis Type" is-open="true">
+                                    <span>{{ bill.type }}</span>
+                                </accordion-group>
+                                <accordion-group heading="Actions" is-open="true">
+                                    <span ng-show="bill.actions.length == 0" class="warning">No Actions Found.</span>
+                                    <ul>
+                                        <li ng-repeat="action in bill.actions">
+                                            <p><strong>Action Date: </strong>{{ action['action-date'] }}</p>
+                                            <ul>
+                                                <strong>Action Desc:</strong>
+                                                <li ng-repeat="(key, value) in action['action-desc']">
+                                                    <strong>{{ key }}: </strong>
+                                                    <ul ng-if="value|isArray">
+                                                        <li ng-repeat="(subkey, subvalue) in value">
+                                                            <strong>{{ subkey }}: </strong>{{ subvalue }}
+                                                        </li>
+                                                    </ul>
+                                                    <span ng-if="!(value|isArray)">{{ value }}</span>
                                                 </li>
                                             </ul>
-                                            <span ng-if="!(value|isArray)">{{ value }}</span>
                                         </li>
                                     </ul>
-                                </li>
-                            </ul>
-                        </accordion-group>
-                        <accordion-group heading="Body" is-open="true">
-                            <div btf-markdown="bill.body"></div>
-                        </accordion-group>
-                    </accordion>
+                                </accordion-group>
+                                <accordion-group heading="Body" is-open="true">
+                                    <div btf-markdown="bill.body"></div>
+                                </accordion-group>
+                            </accordion>
+                        </tab>
+                    </tabset>
                 </div>
             </div>
         </div>

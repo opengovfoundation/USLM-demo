@@ -7,6 +7,7 @@ angular.module('uslmTest.controllers', [])
     function ($scope, $upload, growl) {
 
       $scope.uploadForm = {};
+      $scope.bills = [];
 
       $scope.onFileSelect = function ($files, $event) {
         $scope.input = $event.target;
@@ -22,7 +23,7 @@ angular.module('uslmTest.controllers', [])
         }).progress(function (event) {
           console.log('percent: ' + parseInt(100.0 * event.loaded / event.total));
         }).success(function (data) {
-          $scope.bill = data;
+          $scope.bills.push(data);
         }).error( function (data) {
           angular.forEach(data.messages, 
             function (message) {
