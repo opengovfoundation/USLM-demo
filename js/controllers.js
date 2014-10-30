@@ -18,7 +18,7 @@ angular.module('uslmTest.controllers', [])
             url: 'api',
             file: file
           }).progress(function (event) {
-            console.log('percent: ' + parseInt(100.0 * event.loaded / event.total));
+            //console.log('percent: ' + parseInt(100.0 * event.loaded / event.total));
           }).success(function (data) {
             $scope.bills.push(data);
           }).error( function (data) {
