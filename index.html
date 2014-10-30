@@ -49,47 +49,47 @@
                         <tab ng-repeat="bill in bills" heading="{{ $index + 1 }}" active="bill.active" class="tab">
                             <span ng-click="close(bill)" class="tab-close">close</span>
                             <accordion close-others="false">
-                                <accordion-group heading="Official Title" is-open="true">
+                                <accordion-group heading="Official Title" ng-init="open = true" is-open="open">
                                     {{ bill.title }}
                                 </accordion-group>
-                                <accordion-group heading="Sponsor" is-open="true">
+                                <accordion-group heading="Sponsor" ng-init="open = true" is-open="open">
                                     <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span>
                                     <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
                                 </accordion-group>
-                                <accordion-group heading="Cosponsors" is-open="true">
+                                <accordion-group heading="Cosponsors" ng-init="open = true" is-open="open">
                                     <span ng-show="bill.cosponsors.length == 0" class="warning">No Cosponsors Found.</span>
                                     <ul>
                                         <li ng-repeat="cosponsor in bill.cosponsors">{{ cosponsor.name }} ({{ cosponsor['name-id'] }})</li>
                                     </ul>
                                 </accordion-group>
-                                <accordion-group heading="Committees" is-open="true">
+                                <accordion-group heading="Committees" ng-init="open = true" is-open="open">
                                     <span ng-show="bill.committees.length == 0" class="warning">No Committees Found.</span>
                                     <ul>
                                         <li ng-repeat="committee in bill.committees">{{ committee['committee-name'] }} ({{ committee['committee-id'] }})</li>
                                     </ul>
                                 </accordion-group>
-                                <accordion-group heading="DMS ID" is-open="true">
+                                <accordion-group heading="DMS ID" ng-init="open = true" is-open="open">
                                     <span>{{ bill.dms_id }}</span>
                                 </accordion-group>
-                                <accordion-group heading="Bill Stage" is-open="true">
+                                <accordion-group heading="Bill Stage" ng-init="open = true" is-open="open">
                                     <span>{{ bill.bill_stage }}</span>
                                 </accordion-group>
-                                <accordion-group heading="Congress" is-open="true">
+                                <accordion-group heading="Congress" ng-init="open = true" is-open="open">
                                     <span>{{ bill.congress }}</span>
                                 </accordion-group>
-                                <accordion-group heading="Session" is-open="true">
+                                <accordion-group heading="Session" ng-init="open = true" is-open="open">
                                     <span>{{ bill.session }}</span>
                                 </accordion-group>
-                                <accordion-group heading="Legis Num" is-open="true">
+                                <accordion-group heading="Legis Num" ng-init="open = true" is-open="open">
                                     <span>{{ bill.legis_num }}</span>
                                 </accordion-group>
-                                <accordion-group heading="Current Chamber" is-open="true">
+                                <accordion-group heading="Current Chamber" ng-init="open = true" is-open="open">
                                     <span>{{ bill.chamber }}</span>
                                 </accordion-group>
-                                <accordion-group heading="Legis Type" is-open="true">
+                                <accordion-group heading="Legis Type" ng-init="open = true" is-open="open">
                                     <span>{{ bill.type }}</span>
                                 </accordion-group>
-                                <accordion-group heading="Actions" is-open="true">
+                                <accordion-group heading="Actions" ng-init="open = true" is-open="open">
                                     <span ng-show="bill.actions.length == 0" class="warning">No Actions Found.</span>
                                     <ul>
                                         <li ng-repeat="action in bill.actions">
@@ -109,7 +109,7 @@
                                         </li>
                                     </ul>
                                 </accordion-group>
-                                <accordion-group heading="Body" is-open="true">
+                                <accordion-group heading="Body" ng-init="open = true" is-open="open">
                                     <div btf-markdown="bill.body"></div>
                                 </accordion-group>
                             </accordion>
