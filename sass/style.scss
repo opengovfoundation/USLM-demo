@@ -24,6 +24,12 @@
 
 .tab{
   cursor:pointer;
+
+  &.tab-link:hover > a{
+    background:none;
+    border-color:transparent;
+    text-decoration:underline;
+  }
 }
 
 .tab-close{

@@ -53,7 +53,11 @@ angular.module('uslmTest.controllers', [])
         if ($scope.bills.length > 0) {
           $scope.bills[0].active = true;
         }
-        
+      };
+
+      $scope.closeTabs = function () {
+        $scope.bills = [];
+        $scope.errors = [];
       };
 
     }]);

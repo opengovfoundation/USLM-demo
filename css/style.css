@@ -29,8 +29,14 @@
 .tab {
   cursor: pointer;
 }
+/* line 28, ../sass/style.scss */
+.tab.tab-link:hover > a {
+  background: none;
+  border-color: transparent;
+  text-decoration: underline;
+}
 
-/* line 29, ../sass/style.scss */
+/* line 35, ../sass/style.scss */
 .tab-close {
   text-decoration: underline;
   cursor: pointer;
