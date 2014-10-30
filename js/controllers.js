@@ -24,7 +24,11 @@ angular.module('uslmTest.controllers', [])
         }).success(function (data) {
           $scope.bill = data;
         }).error( function (data) {
-          growl.addWarnMessage('Error: ' + data);
+          angular.forEach(data.messages, 
+            function (message) {
+              growl.addErrorMessage(message.text);
+            });
+          console.error(data);
         });
       };
 

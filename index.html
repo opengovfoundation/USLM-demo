@@ -49,13 +49,6 @@
                             {{ bill.title }}
                         </accordion-group>
                         <accordion-group heading="Sponsor" is-open="true">
-                            <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id']}})</span>
-                            <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
-                        </accordion-group>
-                        <accordion-group heading="Official Title" is-open="true">
-                            {{ bill.title }}
-                        </accordion-group>
-                        <accordion-group heading="Sponsor" is-open="true">
                             <span ng-show="bill.sponsor.name">{{ bill.sponsor.name }} ({{ bill.sponsor['name-id'] }})</span>
                             <span ng-show="!bill.sponsor.name" class="warning">No Sponsor Found.</span>
                         </accordion-group>
