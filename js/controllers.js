@@ -8,6 +8,7 @@ angular.module('uslmTest.controllers', [])
 
       $scope.uploadForm = {};
       $scope.bills = [];
+      $scope.errors = [];
 
       $scope.onFileSelect = function ($files, $event) {
         $scope.input = $event.target;
@@ -24,6 +25,7 @@ angular.module('uslmTest.controllers', [])
             angular.forEach(data.messages, 
               function (message) {
                 growl.addErrorMessage(message.text);
+                $scope.errors.push({'text': message.text, 'file': file.name});
               });
             console.error(data);
           });
@@ -43,6 +45,15 @@ angular.module('uslmTest.controllers', [])
       $scope.close = function (bill) {
         var index = $scope.bills.indexOf(bill);
         $scope.bills.splice(index, 1);
+      };
+
+      $scope.clearErrors = function () {
+        $scope.errors.splice(0, $scope.errors.length);
+        
+        if ($scope.bills.length > 0) {
+          $scope.bills[0].active = true;
+        }
+        
       };
 
     }]);

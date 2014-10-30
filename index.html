@@ -113,6 +113,10 @@
                                 </accordion-group>
                             </accordion>
                         </tab>
+                        <tab heading="Errors" class="warning" ng-if="errors.length > 1" class="tab">
+                            <span ng-click="clearErrors()" class="tab-close">clear</span>
+                            <p ng-repeat="error in errors">{{ error.file }}: {{ error.text }}</p>
+                        </tab>
                     </tabset>
                 </div>
             </div>
