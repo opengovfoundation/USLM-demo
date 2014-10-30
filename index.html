@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="css/style.css">
 
     </head>
-    <body xmlns:ng="http://angularjs.org" id="ng-app" ng-app="uslmTest" ng-controller="AppController">
+    <body xmlns:ng="http://angularjs.org" id="ng-app" ng-app="uslmTest" ng-controller="AppController" ng-keydown="keyCapture($event)">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -44,10 +44,11 @@
                     <div ng-show="selectedFiles != null" class="ng-hide"></div>
                     <button ng-click="clearUpload()" class="btn btn-default">Clear Upload</button>
                 </form>
-                <div class="output" ng-show="bills">
+                <div class="output" ng-if="bills">
+                    <p ng-if="bills.length > 1"><em>Use alt + tab to change bills or alt + w to close a tab</em></p>
                     <tabset>
-                        <tab ng-repeat="bill in bills" heading="{{ $index + 1 }}" active="bill.active" class="tab">
-                            <span ng-click="close(bill)" class="tab-close">close</span>
+                        <tab ng-repeat="bill in bills track by $index" heading="{{ $index + 1 }}" active="bill.active" class="tab">
+                            <span ng-click="closeTab(bill)" class="tab-close">close</span>
                             <accordion close-others="false">
                                 <accordion-group heading="Official Title" ng-init="open = true" is-open="open">
                                     {{ bill.title }}
@@ -118,7 +119,9 @@
                             <span ng-click="clearErrors()" class="tab-close">clear</span>
                             <p ng-repeat="error in errors">{{ error.file }}: {{ error.text }}</p>
                         </tab>
-                        <tab heading="Clear All" ng-click="closeTabs()" ng-if="(bills.length > 0) || (errors.length > 0)" class="tab tab-link"></tab>
+                        <tab select="closeTabs()" ng-if="(bills.length > 0) || (errors.length > 0)" class="tab tab-link">
+                            <tab-heading>Clear All</tab-heading>
+                        </tab>   
                     </tabset>
                 </div>
             </div>
