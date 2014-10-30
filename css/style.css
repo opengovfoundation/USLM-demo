@@ -24,3 +24,14 @@ span.warning {
 .output {
   margin-top: 30px;
 }
+
+/* line 25, ../sass/style.scss */
+.tab {
+  cursor: pointer;
+}
+
+/* line 29, ../sass/style.scss */
+.tab-close {
+  text-decoration: underline;
+  cursor: pointer;
+}

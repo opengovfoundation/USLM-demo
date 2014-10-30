@@ -45,7 +45,8 @@
                 </form>
                 <div class="output" ng-show="bills">
                     <tabset>
-                        <tab ng-repeat="bill in bills" heading="{{ $index + 1 }}" active="bill.active">
+                        <tab ng-repeat="bill in bills" heading="{{ $index + 1 }}" active="bill.active" class="tab">
+                            <span ng-click="close(bill)" class="tab-close">close</span>
                             <accordion close-others="false">
                                 <accordion-group heading="Official Title" is-open="true">
                                     {{ bill.title }}
