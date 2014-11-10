@@ -113,6 +113,9 @@
                                 <accordion-group heading="Body" ng-init="open = true" is-open="open">
                                     <div btf-markdown="bill.body"></div>
                                 </accordion-group>
+                                <accordion-group heading="Markdown" ng-init="open = true" is-open="open">
+                                    <textarea ng-model="bill.body">{{ bill.body }}</textarea>
+                                </accordion-group>
                             </accordion>
                         </tab>
                         <tab heading="Errors" class="tab warning" ng-if="errors.length > 0">
