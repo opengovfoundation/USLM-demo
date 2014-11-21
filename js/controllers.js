@@ -48,11 +48,16 @@ angular.module('uslmTest.controllers', [])
           }).success(function (data) {
             $scope.bills.push(data);
           }).error( function (data) {
-            angular.forEach(data.messages, 
+            if(data.messages){
+              angular.forEach(data.messages, 
               function (message) {
                 growl.addErrorMessage(message.text);
                 $scope.errors.push({'text': message.text, 'file': file.name});
               });
+            }else{
+              growl.addErrorMessage("Unknown error.  Check console for details.");
+            }
+            
             console.error(data);
           });
         });

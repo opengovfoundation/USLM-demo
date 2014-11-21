@@ -2,15 +2,15 @@
 
 require("vendor/autoload.php");
 
-$file = $_FILES['file']['tmp_name'];
-
-if(file_exists($file)){
-  $xml = file_get_contents($file);  
-}else{
-  throw new Exception("File $file does not exist.");
-}
-
 try{
+  $file = $_FILES['file']['tmp_name'];
+
+  if(file_exists($file)){
+    $xml = file_get_contents($file);  
+  }else{
+    throw new Exception("File $file does not exist.  File may exceed max upload size of '" . ini_get("upload_max_filesize") . "'");
+  }
+
   $bill = new \USLM\Legislation\HouseBill();
 
   $bill->loadXML($xml);
