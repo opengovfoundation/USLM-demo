@@ -2,7 +2,7 @@ var imports = [
   'angular-growl',
   'ui.bootstrap',
   'btford.markdown',
-  'angularFileUpload',,
+  'angularFileUpload',
   'ngSanitize',
   'uslmTest.controllers',
   'uslmTest.filters'
